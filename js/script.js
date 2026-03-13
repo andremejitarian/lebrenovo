@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     // URLs dos webhooks
     const WEBHOOK_CONSULTA_URL = 'https://criadordigital-n8n-webhook.kttqgl.easypanel.host/webhook/consulta-matricula';
-    const WEBHOOK_SUBMISSAO_URL = 'https://auto-n8n-webhook.rbnawr.easypanel.host/webhook/c70b4c3c-a465-49bc-b866-1f8b6be71768lebre';
+    const WEBHOOK_SUBMISSAO_URL = 'https://andremejitarian--pranna-webhook-server-fastapi-app.modal.run/api/webhooks/prod/casa-lebre/casa-lebre-ficha-inscricao?secret=6f0a9e372a658fede926e6b001a92b431b98bdc5c6034dbf274a076ac98949f1&sync=true';
 
     // Inicializa as máscaras para os campos
     function initializeMasks() {
@@ -831,12 +831,13 @@ $(document).ready(function () {
             $statusBox.removeClass('status-processing').addClass('status-success');
             $statusHeading.html('✅ Sucesso!');
 
+            const paymentLink = result.output?.link ?? result.link;
             if (formData.formaPagamento === 'Bolsista Integral') {
                 $statusMessage.text('Sua inscrição como bolsista foi registrada com sucesso. Em breve entraremos em contato para os próximos passos.');
                 $goToPaymentBtn.hide();
-            } else if (result.link) {
+            } else if (paymentLink) {
                 $statusMessage.text('Sua inscrição foi finalizada com sucesso! Clique abaixo para prosseguir com o pagamento.');
-                $goToPaymentBtn.data('payment-link', result.link).show();
+                $goToPaymentBtn.data('payment-link', paymentLink).show();
             } else {
                 $statusMessage.text('Inscrição finalizada com sucesso, mas não foi possível obter o link de pagamento. Por favor, entre em contato com a administração do Quintal das Artes.');
                 $goToPaymentBtn.hide();
