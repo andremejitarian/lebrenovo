@@ -1,0 +1,265 @@
+{
+  "planos": {
+    "experimental": {
+      "nome": "Experimental",
+      "descricao": "Pagamento por aula",
+      "meses": 1,
+      "parcelas": 1,
+      "taxaCartaoPercentual": 0.00
+    },
+    "avulso": {
+      "nome": "Pacote de Aulas",
+      "descricao": "Pagamento por aula",
+      "meses": 1,
+      "parcelas": 1,
+      "taxaCartaoPercentual": 0.00
+    },
+    "mes": {
+      "nome": "1 mes de aulas",
+      "descricao": "1 mes de aulas",
+      "meses": 1,
+      "parcelas": 1,
+      "taxaCartaoPercentual": 0.00
+    },
+    "mensal": {
+      "nome": "Mensal",
+      "descricao": "Pagamento mensal",
+      "meses": 1,
+      "parcelas": 1,
+      "taxaCartaoPercentual": 0.00
+    },
+    "bimestral": {
+      "nome": "bimestral",
+      "descricao": "2 meses de aulas",
+      "meses": 2,
+      "parcelas": 2,
+      "taxaCartaoPercentual": 0.00
+    },
+    "trimestral": {
+      "nome": "trimestral",
+      "descricao": "3 meses de aulas",
+      "meses": 3,
+      "parcelas": 3,
+      "taxaCartaoPercentual": 0.00
+    },
+    "semestral": {
+      "nome": "Semestral",
+      "descricao": "6 meses de aulas",
+      "meses": 6,
+      "parcelas": 6,
+      "taxaCartaoPercentual": 0.00
+    },
+    "anual": {
+      "nome": "Anual",
+      "descricao": "12 meses de aulas",
+      "meses": 12,
+      "parcelas": 12,
+      "taxaCartaoPercentual": 0.00
+    }
+  },
+  "cursos": {
+    "colagem_escrita": {
+      "nome": "Colagem + Escrita",
+      "categoria": "curso",
+      "educador": "Maria Fernanda e Gabriel Biasetto",
+      "telefone_educador": "11976569310",
+      "dia_horario": "quartas-feiras 19h > 21h",
+      "duracao_aula": "2 horas",
+      "qtd_aulas": 4,
+      "min_alunos": 6,
+      "inicio": "04/03/2026",
+      "fim": "25/03/2026",
+      "dueDate": "2026-03-15",
+      "precos": {
+        "mes": 330
+      },
+      "faixas_etarias": [
+        {
+          "min": 0,
+          "max": 59,
+          "precos": {
+            "mes": 330
+          }
+        },
+        {
+          "min": 60,
+          "max": 150,
+          "precos": {
+            "mes": 297
+          }
+        }
+      ],
+      "preco_social": {
+        "mes": 297
+      },
+      "antecipado": {
+        "data_limite": "12/02/2026",
+        "precos": {
+          "mes": 297
+        }
+      }
+    },
+    "encadernacao": {
+      "nome": "Encadernação",
+      "categoria": "curso",
+      "educador": "Pedro Pannunzio",
+      "telefone_educador": "11976569310",
+      "dia_horario": "19 e 20/03 das 18h30 as 20h",
+      "duracao_aula": "1,5 horas",
+      "qtd_aulas": 2,
+      "min_alunos": 4,
+      "inicio": "19/03/2026",
+      "fim": "20/03/2026",
+      "dueDate": "2026-03-20",
+      "precos": {
+        "avulso": 180
+      },
+      "faixas_etarias": [
+        {
+          "min": 0,
+          "max": 59,
+          "precos": {
+            "mes": 180
+          }
+        },
+        {
+          "min": 60,
+          "max": 150,
+          "precos": {
+            "mes": 162
+          }
+        }
+      ],
+      "preco_social": {
+        "mes": 162
+      },
+      "antecipado": {
+        "data_limite": "01/03/2026",
+        "precos": {
+          "mes": 162
+        }
+      }
+    },
+    "desenho_quinta_manha": {
+      "nome": "Desenho Quinta de Manhã",
+      "categoria": "curso",
+      "educador": "Yuri Garfunkel",
+      "telefone_educador": "11951233930",
+      "dia_horario": "quintas-feiras 9h30 > 11h",
+      "duracao_aula": "1,5 horas",
+      "qtd_aulas": 6,
+      "min_alunos": 3,
+      "inicio": "19/03/2026",
+      "fim": "23/04/2026",
+      "dueDate": "2026-03-19",
+      "precos": {
+        "avulso": 495
+      },
+      "faixas_etarias": [
+        {
+          "min": 0,
+          "max": 59,
+          "precos": {
+            "mes": 495
+          }
+        },
+        {
+          "min": 60,
+          "max": 150,
+          "precos": {
+            "mes": 445.50
+          }
+        }
+      ],
+      "preco_social": {
+        "mes": 445.50
+      },
+      "antecipado": {
+        "data_limite": "10/03/2026",
+        "precos": {
+          "mes": 445.50
+        }
+      }
+    },
+    "desenho_quinta_noite": {
+      "nome": "Desenho Quinta de Noite",
+      "categoria": "curso",
+      "educador": "Yuri Garfunkel",
+      "telefone_educador": "11951233930",
+      "dia_horario": "quintas-feiras 19h > 20h30",
+      "duracao_aula": "1,5 horas",
+      "qtd_aulas": 6,
+      "min_alunos": 3,
+      "inicio": "19/03/2026",
+      "fim": "23/04/2026",
+      "dueDate": "2026-03-19",
+      "precos": {
+        "avulso": 495
+      },
+      "faixas_etarias": [
+        {
+          "min": 0,
+          "max": 59,
+          "precos": {
+            "mes": 495
+          }
+        },
+        {
+          "min": 60,
+          "max": 150,
+          "precos": {
+            "mes": 445.50
+          }
+        }
+      ],
+      "preco_social": {
+        "mes": 445.50
+      },
+      "antecipado": {
+        "data_limite": "10/03/2026",
+        "precos": {
+          "mes": 445.50
+        }
+      }
+    }
+  },
+  "contraturnos": {},
+  "descontos": {
+    "irmaos": {
+      "nome": "Irmãos",
+      "descricao": "Desconto para irmãos",
+      "percentual": 0.10,
+      "observacao": "Não cumulativo com outros descontos"
+    },
+    "filhos_professores": {
+      "nome": "Filhos de professores",
+      "descricao": "Desconto para filhos de professores",
+      "percentual": 0.10,
+      "observacao": "Não cumulativo com outros descontos"
+    },
+    "desconto_quantidade_cursos": {
+      "ativo": true,
+      "nome": "Desconto por Quantidade de Cursos",
+      "descricao": "Desconto progressivo baseado no número de cursos",
+      "regras": {
+        "2": {
+          "percentual": 0.10,
+          "descricao": "10% de desconto para 2 cursos"
+        },
+        "3": {
+          "percentual": 0.15,
+          "descricao": "15% de desconto para 3 cursos"
+        },
+        "4_ou_mais": {
+          "percentual": 0.15,
+          "descricao": "15% de desconto para 4 ou mais cursos"
+        }
+      },
+      "observacao": "Desconto aplicado sobre o valor total. Não cumulativo com desconto de múltiplos cursos."
+    }
+  },
+  "observacoes": {
+    "pagamento_cartao": "Planos bimestrais e quadrimestrais podem ser pagos via cartão de crédito",
+    "descontos_nao_cumulativos": "Os descontos não são cumulativos"
+  }
+}

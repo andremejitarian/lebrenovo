@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição Casa Lebre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Banner superior -->
+    <div class="banner-top"></div>
+
+    <div class="main-container">
+        <!-- Logo circular que "salta" do card -->
+        <div class="logo-circle">
+            <img src="https://res.cloudinary.com/ddjlqajrd/image/upload/v1767301874/download_pv1zuz.jpg"
+                alt="Logo Entretempos">
+        </div>
+
+        <div class="form-card form-container">
+            <form id="registrationForm">
+                <!-- Campo oculto para matrícula -->
+                <input type="hidden" id="matricula" name="matricula" value="">
+                <input type="hidden" id="valor_calculado_total" name="valor_calculado_total" value="">
+
+                <!-- ETAPA 1: Boas-vindas -->
+                <div class="form-step" id="step-1">
+                    <div class="form-header">
+                        <h1 class="form-title">Ficha de Inscrição</h1>
+                        <p class="form-description">Que bom que chegou aqui! Estamos muito felizes em receber
+                            você.
+                        </p>
+                        <p class="form-contact">Para + informações e dúvidas, entre em contato comigo no whatsapp <a
+                                href="https://wa.me/5511922155944" class="whatsapp-link">(11) 92215-5944</a></p>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-next">
+                            Começar Inscrição
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 2: Dados dos Aprendizes -->
+                <div class="form-step" id="step-2">
+                    <h2 class="step-title">Dados do(s) Aprendiz(es)</h2>
+
+                    <div id="apprenticesContainer">
+                        <!-- Template para aprendiz (será clonado pelo JavaScript) -->
+                        <div class="apprentice-group template" style="display: none;">
+                            <h3 style="display: none;">Aprendiz <span class="apprentice-number">1</span></h3>
+
+                            <div class="form-group">
+                                <label>Nome Completo do Aprendiz *</label>
+                                <input type="text" class="nomeAprendiz" required>
+                                <div class="error-message">Este campo é obrigatório</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Data de Nascimento *</label>
+                                <input type="date" class="dataNascimentoAprendiz" required>
+                                <div class="error-message">Data de nascimento inválida</div>
+                            </div>
+
+                            <!-- Substitua o select multiple por esta estrutura -->
+                            <div class="form-group">
+                                <label>Cursos de Interesse *</label>
+                                <div class="courses-selection">
+                                    <div class="course-category">
+                                        <h4>Cursos Livres</h4>
+                                        <div class="checkbox-group-container courses-checkboxes" data-category="curso">
+                                            <!-- Será preenchido pelo JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="error-message">Selecione pelo menos um curso</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Você se identifica como pessoa trans, preta, indígena, de
+                                    comunidades
+                                    remanescentes de quilombos ou com deficiência? *</label>
+                                <div class="checkbox-group-container">
+                                    <div class="radio-group">
+                                        <input type="radio" name="identidadeSocial-TEMPLATE" value="sim"
+                                            id="social-sim-TEMPLATE" class="identidadeSocial">
+                                        <label for="social-sim-TEMPLATE">Sim</label>
+                                    </div>
+                                    <div class="radio-group">
+                                        <input type="radio" name="identidadeSocial-TEMPLATE" value="nao"
+                                            id="social-nao-TEMPLATE" class="identidadeSocial" checked>
+                                        <label for="social-nao-TEMPLATE">Não</label>
+                                    </div>
+                                </div>
+                                <div class="error-message social-identity-error">Selecione uma opção</div>
+                            </div>
+
+                            <button type="button" class="btn btn-remove-apprentice" style="display: none;">
+                                Remover Aprendiz
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-add-apprentice">
+                        + Adicionar Outro Aprendiz
+                    </button>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-prev">
+                            <span>←</span>
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-next">
+                            Avançar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 3: Dados do Responsável -->
+                <div class="form-step" id="step-3">
+                    <h2 class="step-title">Dados para Pagamento</h2>
+
+                    <div class="form-fields">
+                        <div class="form-group">
+                            <label for="nomeResponsavel">Nome Completo do Responsável *</label>
+                            <input type="text" id="nomeResponsavel" name="nomeResponsavel" required>
+                            <div class="error-message">Este campo é obrigatório</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpfResponsavel">CPF do Responsável *</label>
+                            <input type="text" id="cpfResponsavel" name="cpfResponsavel" class="mask-cpf" required>
+                            <div class="error-message">CPF inválido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emailResponsavel">E-mail *</label>
+                            <input type="email" id="emailResponsavel" name="emailResponsavel" required>
+                            <div class="error-message">E-mail inválido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefoneResponsavel">Telefone/WhatsApp *</label>
+                            <input type="tel" id="telefoneResponsavel" name="telefoneResponsavel" class="mask-phone"
+                                required>
+                            <div class="error-message">Telefone inválido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Como ficou sabendo da Casa Lebre? *</label>
+                            <div class="checkbox-group-container">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="indicacao-amigos"
+                                        id="indicacao-amigos">
+                                    <label for="indicacao-amigos">Indicação de amigos/família</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="redes-sociais" id="redes-sociais">
+                                    <label for="redes-sociais">Redes sociais</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="google" id="google">
+                                    <label for="google">Busca no Google</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="escola" id="escola">
+                                    <label for="escola">Escola/Instituição</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="evento" id="evento">
+                                    <label for="evento">Evento/Feira</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" name="comoSoube" value="outros" id="outros">
+                                    <label for="outros">Outros</label>
+                                </div>
+                            </div>
+                            <div class="error-message how-know-error">Selecione pelo menos uma opção</div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-prev">
+                            <span>←</span>
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-next">
+                            Avançar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 4: Termos e Condições -->
+                <div class="form-step" id="step-terms">
+                    <h2 class="step-title">Termos e Condições</h2>
+
+                    <div class="form-fields">
+                        <div class="terms-and-conditions">
+
+                            <h3>Local onde o curso acontece</h3>
+                            <p>Casa Lebre R. Nicola Ortenzi 104, Taboão Bragança Paulista SP</p>
+
+                            <h3>Faixa etária</h3>
+                            <p>Os cursos na Casa Lebre são indicados para maiores de 16 anos. Os cursos de artes para
+                                crianças e jovens até 15 anos acontecem no Quintal das Artes.</p>
+
+                            <h3>Materiais</h3>
+                            <p>A Casa Lebre oferece alguns materiais de uso comum, porém, são apenas materiais de apoio.
+                                O aluno é o único responsável pela guarda e cuidado do seu material nas dependências do
+                                Instituto Lebre.</p>
+
+                            <h3>Desistência</h3>
+                            <p>A desistência da inscrição antes do início do período do curso, confere ao aluno o
+                                direito à restituição de 100% do valor pago. Após o início das aulas, com os serviços à
+                                disposição do aluno, não haverá qualquer restituição de valores pagos.</p>
+
+                            <h3>Sobre as faltas e feriados</h3>
+                            <p>No momento, a Casa não trabalha com reposição de aulas em caso de faltas. Entretanto,
+                                caso o educador possua material em PDF com o conteúdo teórico perdido pelo aluno no dia
+                                de sua ausência, podemos disponibilizar . Em casos de ausência do professor, por motivos
+                                de força maior, a aula será remarcada. Caso algum dia de aula caia em um feriado, este
+                                dia de aula será remarcado para a data mais próxima.</p>
+
+                            <h3>Certificado</h3>
+                            <p>A expedição do certificado de conclusão do curso está condicionado à solicitação do
+                                aluno.</p>
+
+                            <h3>Acessibilidade da Casa Lebre</h3>
+                            <p>A Casa Lebre tem sofrido mudanças regulares ao longo do tempo, buscando adequar-se para
+                                receber bem todes os públicos. Entretanto, ainda não é um espaço 100% acessível a
+                                cadeirantes, estes precisando ainda de apoio de terceiros para se locomover pelas
+                                dependências da Casa.</p>
+
+                            <h3>Direitos de Imagem</h3>
+                            <p>Está previsto que você autoriza ou não uso de suas imagens, assim como reprodução,
+                                transcrição e utilização de falas captadas durante a oficina, gratuitamente, para as
+                                ações de comunicação e divulgação relacionadas ao evento, e outras ações da Casa Lebre,
+                                sem limitação de quantidade ou tempo de utilização. E, autoriza ou não que as eventuais
+                                criações da sua atividade, poderão ser utilizadas pela Casa Lebre segundo seus próprios
+                                critérios, em todos os tipos de mídia, sempre respeitando os devidos créditos.</p>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="aceiteTermos" name="aceiteTermos" required>
+                                <label for="aceiteTermos">Li e aceito os termos e condições *</label>
+                            </div>
+                            <div class="error-message">Você deve aceitar os termos para continuar</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Autorização para uso de imagem e criações*</label>
+                            <div class="checkbox-group-container">
+                                <div class="radio-group">
+                                    <input type="radio" name="autorizaFoto" value="sim" id="autoriza-sim">
+                                    <label for="autoriza-sim">Autorizo o uso de imagem para divulgação e eventuais
+                                        criações da minha atividade</label>
+                                </div>
+                                <div class="radio-group">
+                                    <input type="radio" name="autorizaFoto" value="nao" id="autoriza-nao">
+                                    <label for="autoriza-nao">NÃO autorizo o uso de imagem e eventuais criações da minha
+                                        atividade</label>
+                                </div>
+                            </div>
+                            <div class="error-message photo-consent-error">Selecione uma opção</div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-prev">
+                            <span>←</span>
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-next">
+                            Avançar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 5: Plano de Pagamento e Resumo -->
+                <div class="form-step" id="step-4">
+                    <h2 class="step-title">Plano de Pagamento e Resumo</h2>
+
+                    <div class="summary-section">
+
+                        <div class="form-group">
+                            <label>Aprendizes e Cursos:</label>
+                            <ul id="summaryApprenticesList">
+                                <!-- Preenchido pelo JavaScript -->
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planoPagamento">Plano de Pagamento *</label>
+                            <select id="planoPagamento" name="planoPagamento" required>
+                                <option value="">Selecione um plano de pagamento</option>
+                                <option value="experimental">Aula Experimental</option>
+                                <option value="avulso">Aula(s) Avulsa(s)</option>
+                                <option value="mes">1 Mês de aulas</option>
+                                <option value="mensal">Mensal</option>
+                                <option value="bimestral">Bimestral</option>
+                                <option value="trimestral">Trimestral</option>
+                                <option value="semestral">Semestral</option>
+                                <option value="anual">Anual</option>
+                            </select>
+                            <div class="error-message">Selecione o plano de pagamento</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formaPagamento">Forma de Pagamento *</label>
+                            <select id="formaPagamento" name="formaPagamento" required>
+                                <option value="">Selecione</option>
+                                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                <option value="PIX/Boleto">PIX/Boleto</option>
+                            </select>
+                            <div class="error-message">Selecione a forma de pagamento</div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="cupomCode">Cupom de Desconto (opcional)</label>
+                            <input type="text" id="cupomCode" name="cupomCode" placeholder="Digite seu cupom">
+                            <div class="cupom-feedback"></div>
+                        </div>
+
+                        <div class="price-details">
+                            <p>Subtotal: <span id="summarySubtotal">R\$ 0,00</span></p>
+                            <p>Desconto: <span id="summaryDiscount">R\$ 0,00</span></p>
+                            <p>Cupom: <span id="summaryCoupon">R\$ 0,00</span></p>
+                            <p>Taxa Cartão: <span id="summaryCardFee">R\$ 0,00</span></p>
+                            <p class="total-price">Total a pagar: <span id="summaryTotal">R\$ 0,00</span></p>
+                            <div class="price-notes">
+                                <p id="min-students-note">* Mínimo de 3 alunos para formação de turma.</p>
+                                <p>** Caso a turma não seja formada, o reembolso será realizado integralmente.</p>
+                            </div>
+                            <div id="cancellation-policy" class="cancellation-policy"
+                                style="display:none; margin-top: 15px; font-size: 0.9em; color: #555; background-color: #f9f9f9; padding: 10px; border-radius: 5px; border-left: 3px solid #ff6b6b;">
+                                <!-- Texto da política de cancelamento será inserido via JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-prev">
+                            <span>←</span>
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-submit">
+                            Finalizar Inscrição
+                            <span>✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TELA DE SUCESSO -->
+                <div class="form-step" id="step-success">
+                    <h2 class="step-title">Cadastro quase completo!</h2>
+
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div id="registrationStatusBox" class="status-box">
+                            <h3 id="statusHeading"></h3>
+                            <p id="statusMessage"></p>
+                        </div>
+
+                        <button type="button" id="goToPaymentBtn" class="btn btn-primary" style="display: none;">
+                            Ir para Pagamento
+                            <span>💳</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts jQuery e jQuery Mask -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- Seus scripts personalizados -->
+    <script src="js/cpfValidation.js"></script>
+    <script src="js/priceCalculator.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
